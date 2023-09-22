@@ -1,0 +1,122 @@
+/* Cada reserva deve conter informações como nome
+do solicitante, data, horário, sala desejada e finalidade da reunião.
+Requisitos do Sistema:
+1. O sistema deve ser executado no console usando o navegador.
+2. Os usuários devem poder:
+Trabalho em Equipe: Desenvolvimento de um Programa em JavaScript - Noite 2
+O
+sistema deve permitir que os usuários criem, visualizem, editem e cancelem
+reservas de salas de reunião. Criar uma nova reserva especificando nome do solicitante, data, horário,
+sala desejada e finalidade da reunião.
+Visualizar a lista de todas as reservas com seus detalhes.
+Editar os detalhes de uma reserva existente, como nome do solicitante,
+data, horário, sala ou finalidade.
+Cancelar uma reserva existente.
+3. O programa deve fornecer feedback ao usuário, como mensagens de sucesso
+ou erro.
+4. O sistema deve ser implementado utilizando funções e objetos em JavaScript.
+5. O programa deve ser organizado em um repositório do GitHub.
+*/
+
+//1° uma mensagem de boas vindas + perguntando sobre reserva.
+console.log("Olá, tudo bem? Gostaria de fazer uma reserva de Sala?");
+console.log("Digite Sim para reservar ou Não para sair da página:");
+
+const simNao = prompt("Sim ou Não");
+var Sim = "Sim"
+var Nao = "Não"
+while (simNao) { //revizar looping
+switch (simNao) {
+    case 'Sim':
+        console.log("Escolha uma sala.")
+        break;
+    case 'Não' :
+        console.log("Que pena! Ficamos ao seu dispor!");
+    default:
+         console.log("Opção inválida. Tente novamente.");
+        break;
+}
+if (Sim){
+    console.log('Vamos reservar a sala!');
+}else{
+}
+break;
+}
+
+const reservas1 = [];
+
+
+function criarReserva1() {  //fazer o usuário digitar seus dados/dados da reserva;
+    let nome = prompt();
+    let data = prompt();
+    let horario = prompt();
+    let motivo = prompt();
+    let salaDesejada = prompt();
+  const reservas1 = {
+    nome: nome,
+    data: data,
+    horario: horario,
+    motivo: motivo,
+    salaDesejada: salaDesejada ,
+  }
+}
+
+function visualizarReservas1() {
+    
+}
+
+function editarReserva1() {
+  // Implementar edição de reserva
+}
+
+function deletarReserva1() {
+  // Implementar exclusão de reserva
+}
+
+function exibirMenu() {
+  console.log("Menu:");
+  console.log("1. Criar Reserva");
+  console.log("2. Visualizar Reservas");
+  console.log("3. Editar Reserva");
+  console.log("4. Deletar Reserva");
+  console.log("5. Sair");
+  const opcao = prompt("Digite o número da opção desejada:");
+
+  switch (opcao) {
+    case "1":
+      // Chamar função de criar reserva
+      break;
+    case "2":
+      // Chamar função de visualizar reservas
+      break;
+    case "3":
+      // Chamar função de editar reserva
+      break;
+    case "4":
+      // Chamar função de deletar reserva
+      break;
+    case "5":
+      console.log("Saindo do programa. Até logo!");
+      return;
+    default:
+      console.log("Opção inválida. Tente novamente.");
+  }
+
+  // Chamar função de exibir menu novamente
+}
+
+exibirMenu();
+
+
+while (Sim) {
+    if (Sim){
+        console.log("Vamos criar a sua sala.");
+        let nome = prompt("Digite o nome do solicitante:");
+        let data = prompt("Digite a data que queres reservar a sala:");
+        let horario = prompt("Digite o horário da reserva:");
+        let finalidade = prompt("Qual o motivo da reserva?");
+        let salaDesejada = prompt("Digite a sala que queres:");
+       }else{
+       }
+  break;     
+}
