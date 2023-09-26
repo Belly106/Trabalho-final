@@ -99,8 +99,9 @@ function visualizarReserva() {
 function editarReserva() {
     const nomeAntigo = prompt("Informe o nome que queres mudar:");
     const dataAntiga = prompt("Informe a data que queres mudar (DD/MM/ANO)");
-
-    const index = reservas.findIndex(reserva => reserva.data === dataAntiga && reserva.nome === nomeAntigo); //busca a data e o horáario antigos armazenados no array reservas. 
+    const finalidadeAntiga = prompt ("Informe a finalidade antiga:");
+    const horarioAntigo = prompt ("Informe o horário antigo:");
+    const index = reservas.findIndex(reserva => reserva.data === dataAntiga && reserva.nome === nomeAntigo && reserva.finalidade === finalidadeAntiga && reserva.horario === horarioAntigo); //busca a data e o horáario antigos armazenados no array reservas. 
     if (index === -1) {
         console.log("Reserva não encontrada.");
         return;
@@ -108,8 +109,12 @@ function editarReserva() {
      
     const novaData = prompt ("Informe a nova data (DD/MM/ANO):");
     const novoNome = prompt ("Informe o novo nome:");
+    const novaFinalidade = prompt("Informe a nova finalidade");
+    const novoHorario = prompt("Informe o novo horário:");
     reservas[index].data = novaData;
     reservas[index].nome = novoNome;
+    reservas[index].finalidade = novaFinalidade;
+    reservas[index].horario = novoHorario;
 
 }
 
