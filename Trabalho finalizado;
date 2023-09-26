@@ -1,0 +1,126 @@
+//variável para mostrar as salas disponivéis. 
+const salasDeReuniao = [
+    { id: 1, nome: "Sala 1" },
+    { id: 2, nome: "Sala 2" },
+    { id: 3, nome: "Sala 3" },
+    { id: 4, nome: "Sala 4" },
+    { id: 5, nome: "Sala 5" },
+    { id: 6, nome: "Sala 6" },
+  
+];
+
+// Array para armazenar as reservas
+const reservas = [];
+
+alert("Olá, tudo bem? Gostaria de fazer uma reserva de Sala?");
+let simNao = prompt("Sim ou Não").toLowerCase(); // Converte para minúsculas.
+
+while (simNao !== 'não') { // Continue enquanto a resposta não for 'Não'.
+    if (simNao === 'sim') {
+        console.log("Escolha uma sala.");
+        // serve para chamar a função criarReserva para criar uma reserva.
+        exibirMenu();
+    } else {
+        console.log("Opção inválida. Tente novamente.");
+    }
+
+    // Pergunte novamente se deseja fazer outra reserva.
+    console.log("Gostaria de fazer outra reserva?");
+    console.log("Digite 'Sim' para reservar ou 'Não' para sair da página:");
+    simNao = prompt("Sim ou Não").toLowerCase();
+
+}
+ 
+//função para mostrar as opções.
+function exibirMenu() {
+    console.log("Menu:");
+    console.log("1. Criar Reserva");
+    console.log("2. Visualizar Reservas");
+    console.log("3. Editar Reserva");
+    console.log("4. Deletar Reserva");
+    console.log("5. Sair");
+    const opcao = prompt("Digite o número da opção desejada:");
+  
+    switch (opcao) {
+      case "1":
+       criarReserva(); // Chamar função de criar reserva
+        break;
+      case "2":
+        visualizarReserva();// Chamar função de visualizar reservas
+        break;
+      case "3":
+        editarReserva();// Chamar função de editar reserva
+        break;
+      case "4":
+        deletarReserva();// Chamar função de deletar reserva
+        break;
+      case "5":
+        console.log("Saindo do programa. Até logo!");
+        return;
+      default:
+        console.log("Opção inválida. Tente novamente.");
+    }
+    //exibirMenu();
+} //exibirMenu();
+
+function criarReserva() {
+    const salaId = Number(prompt("Informe o número da sala (1-6):"));
+    const sala = salasDeReuniao.find(sala => sala.id === salaId); //buscando na variável salasDeReuniao.
+    
+    if (!sala) {
+        console.log("Sala não encontrada.");
+        return;
+    }
+
+    const data = prompt("Informe a data (DD/MM/ANO):");
+    const horario = prompt("Informe o horário:");
+    const nome = prompt ("Informe o nome do solicitante:");
+    const finalidade = prompt ("Informe a finalidade da reunião:");
+    const reserva = {
+        sala: sala.nome,
+        data: data,
+        horario: horario,
+        nome: nome,
+        finalidade: finalidade
+    };
+    reservas.push(reserva);
+    console.log(`Reserva criada para ${sala.nome} em ${data}, ${horario}.`);
+}
+
+
+
+function visualizarReserva() {
+    console.log("Lista de Reservas:");
+    for (const reserva of reservas) {
+        console.log(`Nome: ${reserva.nome}, Data: ${reserva.data}, Horário: ${reserva.horario}, Motivo: ${reserva.finalidade}, Sala: ${reserva.salaDesejada}`);
+    }
+}
+
+function editarReserva() {
+    const nomeAntigo = prompt("Informe o nome que queres mudar:");
+    const dataAntiga = prompt("Informe a data que queres mudar (DD/MM/ANO)");
+
+    const index = reservas.findIndex(reserva => reserva.data === dataAntiga && reserva.nome === nomeAntigo); //busca a data e o horáario antigos armazenados no array reservas. 
+    if (index === -1) {
+        console.log("Reserva não encontrada.");
+        return;
+    }
+     
+    const novaData = prompt ("Informe a nova data (DD/MM/ANO):");
+    const novoNome = prompt ("Informe o novo nome:");
+    reservas[index].data = novaData;
+    reservas[index].nome = novoNome;
+
+}
+
+function deletarReserva(){ 
+    const nome = prompt("Informe o nome para deletar:");
+
+const index = reservas.findIndex(reserva => reserva.nome === nome); //busca somente o nome para deletar a reserva.
+    if (index === -1) {
+        console.log("Reserva não encontrada.");
+        return;
+    }
+    reservas.splice(index, 1);
+    console.log("Reserva cancelada com sucesso.");
+}
